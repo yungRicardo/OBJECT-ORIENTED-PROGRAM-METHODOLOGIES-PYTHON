@@ -4,9 +4,11 @@ Submitted by Ricky Espinoza
 Submitted:  November 5, 2023
 """
 
+
 def print_header():
     """Prints a header."""
     print("\nSTEM Center Temperature Project\nby Ricky Espinoza")
+
 
 def print_menu():
     """Prints menu for user to see options."""
@@ -19,6 +21,7 @@ def print_menu():
           "5 - Show temperature by date and time\n"
           "6 - Show histogram of temperatures\n"
           "7 - Quit")
+
 
 def user_choice():
     """Checks users input to see if option is a valid one. If not user is prompted again to enter valid option"""
@@ -50,29 +53,36 @@ def user_choice():
         else:
             print("Invalid Choice, please enter an integer between 1 and 7.\n\n")
 
+
 def new_file(dataset):
     """Open a new file"""
     print("New File Function Called")
+
 
 def choose_units():
     """Choose unit conversion"""
     print("Choose Units Function Called")
 
+
 def change_filter(sensor_list, active_sensors):
     """Change filter"""
     print("Change Filter Function Called")
+
 
 def print_summary_statistics(dataset, active_sensors):
     """Print summary statistics"""
     print("Summary Statistics Function Called")
 
+
 def print_temp_by_day_time(dataset, active_sensors):
     """Print temp by daytime"""
     print("Print Temp by Day/Time Function Called")
 
+
 def print_histogram(dataset, active_sensors):
     """Print histogram"""
     print("Print Histogram Function Called")
+
 
 def convert_units(celsius_value, units):
     """Converts Celsius to Fahrenheit or Kelvin depending on unit selected"""
@@ -87,31 +97,34 @@ def convert_units(celsius_value, units):
     else:
         print("*** Invalid Input, the conversion type must be 0, 1, or 2: You entered an illegal value")
 
+
 def recursive_sort(list_to_sort, key=0):
     """   Recursively takes a list of tuples as input and recursively sorts it in ascending order
     based on the values in the sublists at the specified key index. By default, it sorts the
     sublists based on the values at index 0.
     """
 
-    temp_list = list_to_sort.copy() # created a new list with copied elements from original list
-    switched = False # set a flag to check if elements in the list have swtiched
+    # created a new list with copied elements from original list
+    temp_list = list_to_sort.copy()
+    switched = False  # set a flag to check if elements in the list have swtiched
 
-    if len(temp_list) <= 1: # if the list contains one or zero elements just return the list as is
+    if len(temp_list) <= 1:  # if the list contains one or zero elements just return the list as is
         return temp_list
-    
+
     for i in range(len(temp_list) - 1):
         if (key == 0 and temp_list[i][key] > temp_list[i + 1][key]) or (key == 1 and temp_list[i][key] > temp_list[i + 1][key]):
             temp_list[i], temp_list[i + 1] = temp_list[i + 1], temp_list[i]
-            switched = True # if "switched becomes True, a swtich has occurred in the list"
-    
-    if not switched: # if 'switched' is still False, that means no switches occurred
-        return temp_list7
+            switched = True  # if "switched becomes True, a swtich has occurred in the list"
+
+    if not switched:  # if 'switched' is still False, that means no switches occurred
+        return temp_list
 
     return recursive_sort(temp_list[:-1], key) + [temp_list[-1]]
 
+
 def main():
     """Main is the main program that invokes all functions within program."""
-    print("\n\n\n") # This is here so the output in the terminal is visibly clear with blank lines
+    print("\n\n\n")  # This is here so the output in the terminal is visibly clear with blank lines
 
     sensors = {
         "4213": ("STEM Center", 0),
@@ -125,21 +138,23 @@ def main():
     # filter_list = [value[1] for value in sensors.values()]
 
     print("Original unsorted list\n"
-         f"{sensor_list}")
-    
+          f"{sensor_list}")
+
     print("\nList sorted by room number\n"
-         f"{recursive_sort(sensor_list)}")
-    
+          f"{recursive_sort(sensor_list)}")
+
     print("\nList sorted by room name\n"
           f"{recursive_sort(sensor_list, 1)}")
 
     print("\nOriginal unsorted list\n"
-         f"{sensor_list}")
-    
+          f"{sensor_list}")
+
     print_header()
     user_choice()
 
-    print("\n\n\n") # This is here so the output in the terminal is visibly clear with blank lines
+    # This is here so the output in the terminal is visibly clear with blank lines
+    print("\n\n\n")
+
 
 if __name__ == "__main__":
     main()
